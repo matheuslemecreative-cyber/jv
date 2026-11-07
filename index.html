@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b0d">
+
+  <title>Jogos Vorazes | O Desafio de Panem</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="background-glow"></div>
+  <div id="particles" class="particles" aria-hidden="true"></div>
+  <div class="screen-lines" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a href="#" class="brand" id="brand">
+      <span class="brand-icon">✦</span>
+      <span>PANEM <strong>QUIZ</strong></span>
+    </a>
+
+    <div class="topbar-right">
+      <span class="edition">
+        TRANSMISSÃO OFICIAL DA CAPITAL
+      </span>
+
+      <button
+        class="sound-btn"
+        id="soundBtn"
+        aria-label="Ativar ou desativar sons"
+        title="Ativar ou desativar sons"
+      >♪</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- TELA INICIAL -->
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          TRANSMISSÃO AO VIVO • PANEM
+        </div>
+
+        <div class="hero-symbol" aria-hidden="true">
+          <span>🏹</span>
+          <div class="symbol-ring"></div>
+        </div>
+
+        <div class="hero-kicker">
+          BEM-VINDO À ARENA
+        </div>
+
+        <h1>
+          JOGOS<br>
+          <span>VORAZES</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          O DESAFIO DEFINITIVO DE PANEM
+        </div>
+
+        <p class="hero-description">
+          Dos primeiros Jogos Vorazes à revolução do
+          Tordo. Prove que você conhece os segredos
+          da arena, os tributos e a história de Panem.
+          Apenas os mais preparados sobreviverão
+          às 50 perguntas.
+        </p>
+
+        <div class="hero-divider">
+          <span></span>
+          <strong>✦</strong>
+          <span></span>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <strong>50</strong>
+            <span>DESAFIOS</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>03</strong>
+            <span>NÍVEIS</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>900</strong>
+            <span>PONTOS MÁXIMOS</span>
+          </div>
+        </div>
+
+        <div class="difficulty-preview">
+          <div>
+            <span class="dot easy"></span>
+            15 FÁCEIS
+          </div>
+
+          <div>
+            <span class="dot medium"></span>
+            20 MÉDIAS
+          </div>
+
+          <div>
+            <span class="dot hard"></span>
+            15 DIFÍCEIS
+          </div>
+        </div>
+
+        <div class="name-field">
+          <label for="playerName">
+            IDENTIFICAÇÃO DO TRIBUTO
+          </label>
+
+          <input
+            type="text"
+            id="playerName"
+            maxlength="24"
+            autocomplete="off"
+            placeholder="Digite seu nome..."
+          >
+        </div>
+
+        <button class="primary-btn" id="startBtn">
+          <span>ENTRAR NA ARENA</span>
+          <span class="btn-arrow">➜</span>
+        </button>
+
+        <p class="small-note">
+          ⚠ Nas perguntas difíceis, você terá apenas
+          15 segundos para responder.
+        </p>
+
+        <div class="capitol-warning">
+          <span>✦</span>
+          QUE A SORTE ESTEJA SEMPRE A SEU FAVOR
+          <span>✦</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TELA DO QUIZ -->
+    <section id="quizScreen" class="screen">
+      <div class="quiz-layout">
+
+        <div class="quiz-top">
+          <div class="quiz-info">
+            <span class="overline">
+              TRANSMISSÃO DA ARENA
+            </span>
+            <h2>O Desafio de Panem</h2>
+          </div>
+
+          <div class="score-box">
+            <span>PONTUAÇÃO</span>
+            <strong id="scoreValue">0</strong>
+          </div>
+        </div>
+
+        <div class="progress-info">
+          <span id="questionCounter">
+            DESAFIO 01 / 50
+          </span>
+
+          <span id="progressPercent">2%</span>
+        </div>
+
+        <div class="progress-track">
+          <div
+            id="progressFill"
+            class="progress-fill"
+          ></div>
+        </div>
+
+        <div class="question-card" id="questionCard">
+
+          <div class="question-meta">
+            <span
+              id="difficultyBadge"
+              class="difficulty-badge easy"
+            >FÁCIL</span>
+
+            <span
+              id="questionCategory"
+              class="category"
+            >OS DISTRITOS</span>
+          </div>
+
+          <div class="question-decoration">
+            ✦ ARQUIVO DA CAPITAL ✦
+          </div>
+
+          <h2
+            id="questionText"
+            class="question-title"
+          ></h2>
+
+          <div id="timerBox" class="timer-box hidden">
+            <div class="timer-info">
+              <span>⏳ TEMPO RESTANTE</span>
+              <strong id="timerValue">15s</strong>
+            </div>
+
+            <div class="timer-track">
+              <div
+                id="timerFill"
+                class="timer-fill"
+              ></div>
+            </div>
+          </div>
+
+          <div
+            id="answersContainer"
+            class="answers"
+          ></div>
+
+          <div
+            id="feedback"
+            class="feedback hidden"
+            aria-live="polite"
+          >
+            <strong id="feedbackTitle"></strong>
+            <p id="feedbackText"></p>
+          </div>
+
+          <div class="question-footer">
+            <div class="streak">
+              <span>🔥 SEQUÊNCIA</span>
+              <strong id="streakValue">0</strong>
+            </div>
+
+            <button
+              id="nextBtn"
+              class="next-btn hidden"
+            >
+              PRÓXIMO DESAFIO ➜
+            </button>
+          </div>
+
+        </div>
+
+        <div class="quiz-bottom">
+          <span id="playerLabel">
+            TRIBUTO: VISITANTE
+          </span>
+
+          <span>✦ PANEM ✦</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TELA DE RESULTADOS -->
+    <section id="resultScreen" class="screen">
+      <div class="result-container">
+
+        <div
+          class="result-trophy"
+          id="resultTrophy"
+        >🏆</div>
+
+        <div class="eyebrow">
+          TRANSMISSÃO ENCERRADA
+        </div>
+
+        <h1
+          id="resultTitle"
+          class="result-title"
+        >
+          SÍMBOLO DA REVOLUÇÃO
+        </h1>
+
+        <p
+          id="resultMessage"
+          class="result-message"
+        ></p>
+
+        <div class="result-score-card">
+          <span>PONTUAÇÃO FINAL</span>
+
+          <strong id="finalScore">0</strong>
+
+          <small>
+            DE 900 PONTOS POSSÍVEIS
+          </small>
+
+          <div
+            id="newRecord"
+            class="new-record hidden"
+          >
+            ✦ NOVO RECORDE PESSOAL ✦
+          </div>
+        </div>
+
+        <div class="result-stats">
+          <div>
+            <strong id="correctCount">0</strong>
+            <span>ACERTOS</span>
+          </div>
+
+          <div>
+            <strong id="wrongCount">0</strong>
+            <span>ERROS</span>
+          </div>
+
+          <div>
+            <strong id="accuracyValue">0%</strong>
+            <span>PRECISÃO</span>
+          </div>
+        </div>
+
+        <div class="performance-card">
+          <h3>RELATÓRIO DA ARENA</h3>
+          <div id="performanceDetails"></div>
+        </div>
+
+        <div class="result-actions">
+          <button
+            id="restartBtn"
+            class="primary-btn"
+          >
+            VOLTAR À ARENA ➜
+          </button>
+
+          <button
+            id="shareBtn"
+            class="secondary-btn"
+          >
+            COMPARTILHAR RESULTADO
+          </button>
+        </div>
+
+        <p
+          id="recordText"
+          class="record-text"
+        ></p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>
+      ✦ QUE A SORTE ESTEJA SEMPRE A SEU FAVOR ✦
+    </span>
+
+    <p>
+      Quiz de fãs inspirado no universo de Jogos Vorazes.
+    </p>
+  </footer>
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+  ></div>
+
+</body>
+</html>
